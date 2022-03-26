@@ -234,6 +234,6 @@ If you find our work inspiring or use our codebase in your research, please cons
 ## Acknowledgements
 This is a project based on [Bag of tricks](https://github.com/zhangyongshun/BagofTricks-LT).
 
-The data augmentations in dataset are based on [PaCo](https://github.com/facebookresearch/classifier-balancing)
+The data augmentations in dataset are based on [PaCo](https://github.com/dvlab-research/Parametric-Contrastive-Learning)
 
 The MOCO in constrstive learning is based on [MOCO](https://github.com/facebookresearch/moco)
