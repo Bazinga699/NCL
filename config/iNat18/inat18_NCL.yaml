@@ -1,0 +1,68 @@
+NAME: 'NCL'
+OUTPUT_DIR: '/media/ssd1/lijun/output/NCL'
+SHOW_STEP: 500
+SAVE_STEP: 50
+VALID_STEP: 1
+INPUT_SIZE: (224, 224)
+COLOR_SPACE: 'RGB'
+
+DATASET:
+  DATASET: 'iNaturalist'
+  TRAIN_JSON: '/home/lijun/papers/NCL/dataset_json/iNat18_train.json'
+  VALID_JSON: '/home/lijun/papers/NCL/dataset_json/iNat18_val.json'
+
+BACKBONE:
+  TYPE: 'res50'
+  MULTI_NETWORK_TYPE: ['res50','res50','res50']
+MODULE:
+  TYPE: 'GAP'
+
+DROPOUT: False
+
+CLASSIFIER:
+  TYPE: 'cos'
+  COS_SCALE: 32
+  SEMI_TYPE: 'mlp'
+  BIAS: True
+
+LOSS:
+  LOSS_TYPE: 'NIL_NBOD'
+  MULTI_CLASIIFIER_LOSS:
+    DIVERSITY_FACTOR: 0.6
+    DIVERSITY_FACTOR_HCM: 0.6
+  HCM_N: 2442
+  HCM_RATIO: 1.0
+  CE_RATIO: 1.0
+  CON_RATIO: 0.0
+TRAIN:
+
+  BATCH_SIZE: 32
+  MAX_EPOCH: 400
+  NUM_WORKERS: 8
+  COMBINER:
+    TYPE: 'multi_network_default'
+  OPTIMIZER:
+    TYPE: 'SGD'
+    BASE_LR: 0.2
+    MOMENTUM: 0.9
+    WEIGHT_DECAY: 2e-4
+  LR_SCHEDULER:
+    TYPE: 'cosine'
+    COSINE_DECAY_END: 400
+  TENSORBOARD:
+    ENABLE: False
+  SAMPLER:
+    TYPE: 'default'
+    MULTI_NETWORK_TYPE: ['default']
+
+  DISTRIBUTED: True
+  SYNCBN: True
+
+TRANSFORMS:
+  TRAIN_TRANSFORMS: ("random_resized_crop", "random_horizontal_flip", "color_jitter")
+  TEST_TRANSFORMS: ("shorter_resize_for_crop", "center_crop")
+
+TEST:
+  BATCH_SIZE: 128
+  NUM_WORKERS: 8
+  MODEL_FILE: 'best_model.pth'
