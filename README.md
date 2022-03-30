@@ -22,7 +22,7 @@ tensorboardX >= 2.1 #Visualization of the training process
 tensorflow >= 1.14.0 #convert long-tailed cifar datasets from tfrecords to jpgs
 Python 3.6 #This is the version I am using, other versions(python 3.x) may be accteptable
 ```
-####Detailed requirement
+#### Detailed requirement
 ```bash
 pip install -r requirements.txt
 ```
