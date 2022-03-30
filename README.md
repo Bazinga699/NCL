@@ -8,7 +8,7 @@ This repository is the official PyTorch implementation of the paper in CVPR 2022
 [Jun Wan](https://scholar.google.com/citations?user=bSbc7FQAAAAJ&hl=zh-CN),
 [Zhen Lei](https://scholar.google.com/citations?user=cuJ3QG8AAAAJ&hl=zh-CN),
 [Guodong Guo](https://scholar.google.com/citations?user=f2Y5nygAAAAJ&hl=zh-CN) <br/>
-[[PDF]()]
+[[PDF](https://arxiv.org/pdf/2203.15359.pdf)]
 &nbsp;
 <p align="center">
 <img src='./resource/framework_English.png'>
@@ -217,7 +217,7 @@ export NCCL_SOCKET_IFNAME = [your own socket name]
 # Train inaturalist2018. 
 # `GPUs` are the GPUs you want to use, such as `0,1,2,3,4,5,6,7`.
 # `NUM_GPUs` are the number of GPUs you want to use. If you set `GPUs` to `0,1,2,3,4,5,6,7`, then `NUM_GPUs` should be `8`.
-bash distributed_data_parallel_train.sh config/ImageNet_LT/ImageNet_LT.yaml 8 0,1,2,3,4,5,6,7
+bash distributed_data_parallel_train.sh config/iNat18/inat18_NCL.yaml 8 0,1,2,3,4,5,6,7
 
 ```
 ## Citation
