@@ -3,7 +3,7 @@
 This repository is the official PyTorch implementation of the paper in CVPR 2022:
 
 **Nested Collaborative Learning for Long-Tailed Visual Recognition**<br/>
-[Jun Li](),
+[Jun Li](https://scholar.google.com/citations?user=93wHW4oAAAAJ&hl=zh-CN&oi=sra),
 [Zichang Tan](https://scholar.google.com/citations?user=s29CDY8AAAAJ&hl=zh-CN&oi=ao),
 [Jun Wan](https://scholar.google.com/citations?user=bSbc7FQAAAAJ&hl=zh-CN),
 [Zhen Lei](https://scholar.google.com/citations?user=cuJ3QG8AAAAJ&hl=zh-CN),
