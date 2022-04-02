@@ -210,7 +210,7 @@ bash data_parallel_train.sh /home/lijun/papers/NCL/config/CIFAR/CIFAR100/cifar10
 #### Distributed training with DistributedDataParallel 
 Note that if you choose to train with DistributedDataParallel, the BATCH_SIZE in .yaml indicates the number on each GPU!
 
-Default Batch_Size: CIFAR: 64; ImageNet_LT: 256; Places_LT: 256; iNat18: 512.
+Default training batch-size: CIFAR: 64; ImageNet_LT: 256; Places_LT: 256; iNat18: 512. e.g. if you want to train NCL with batch-size=512 on 8 GPUS, you should set the BATCH_SIZE in .yaml to 64.
 ```bash
 1, Change the NCCL_SOCKET_IFNAME in run_with_distributed_parallel.sh to [your own socket name]. 
 export NCCL_SOCKET_IFNAME = [your own socket name]
