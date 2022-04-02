@@ -17,10 +17,10 @@ This repository is the official PyTorch implementation of the paper in CVPR 2022
 
 ## Main requirements
 ```bash
-torch >= 1.7.1 #This is the version I am using, other versions may be accteptable, if there is any problem, go to https://pytorch.org/get-started/previous-versions/ to get right version(espicially CUDA) for your machine
-tensorboardX >= 2.1 #Visualization of the training process
-tensorflow >= 1.14.0 #convert long-tailed cifar datasets from tfrecords to jpgs
-Python 3.6 #This is the version I am using, other versions(python 3.x) may be accteptable
+torch >= 1.7.1 #This is the version I am using, other versions may be accteptable, if there is any problem, go to https://pytorch.org/get-started/previous-versions/ to get right version(espicially CUDA) for your machine.
+tensorboardX >= 2.1 #Visualization of the training process.
+tensorflow >= 1.14.0 #convert long-tailed cifar datasets from tfrecords to jpgs.
+Python 3.6 #This is the version I am using, other versions(python 3.x) may be accteptable.
 ```
 #### Detailed requirement
 ```bash
