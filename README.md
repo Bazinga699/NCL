@@ -230,7 +230,8 @@ If you find our work inspiring or use our codebase in your research, please cons
 @inproceedings{li2022nested,
   title={Nested Collaborative Learning for Long-Tailed Visual Recognition},
   author={Li, Jun and Tan, Zichang and Wan, Jun and Lei, Zhen and Guo, Guodong},
-  booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={6949--6958},
   year={2022}
 }
 ```
