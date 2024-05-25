@@ -27,7 +27,10 @@ def multi_networks_train_model(
         label_list = [label] * network_num
         meta_list = [meta] * network_num
 
-        cnt = label_list[0].shape[0]
+        if isinstance(label, list):
+            cnt = label[0].shape[0]
+        else:
+            cnt = label.shape[0]
 
         optimizer.zero_grad()
 
@@ -88,7 +91,7 @@ def multi_network_valid_model_final(
                 feature = model(image_list, label=label, feature_flag=True)
                 output_ce = model(feature, classifier_flag=True)
 
-            loss = criterion(output_ce, (label,))
+            #loss = criterion(output_ce, (label,))
 
             for j, logit in enumerate(output_ce):
                 every_network_result[j] += torch.sum(torch.argmax(logit, dim=1).cpu() == label.cpu())
@@ -98,7 +101,7 @@ def multi_network_valid_model_final(
 
             acc, cnt = accuracy(now_result.cpu().numpy(), label.cpu().numpy())
             cnt_all += cnt
-            all_loss.update(loss.data.item(), cnt)
+            #all_loss.update(loss.data.item(), cnt)
             acc_avg.update(acc, cnt)
 
         pbar_str = "------- Valid: Epoch:{:>3d}  Valid_Loss:{:>5.3f}   Valid_ensemble_Acc:{:>5.2f}%-------".format(

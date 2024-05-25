@@ -18,6 +18,7 @@ class Combiner:
         self.CON_ratio = self.cfg.LOSS.CON_RATIO
         self.show_step = self.cfg.SHOW_STEP
         self.distributed = self.cfg.TRAIN.DISTRIBUTED
+        self.intra_N = self.cfg.DATASET.INTRA_N
 
         print('_'*100)
         print('combiner type: ', self.type)
@@ -36,7 +37,11 @@ class Combiner:
     def multi_network_default(self, model, criterion, image, label, meta, **kwargs):
 
         for i in range(len(image)):
-            image[i], label[i] = image[i].to(self.device), label[i].to(self.device)
+            if isinstance(image[i],list):
+                image[i], label[i] = torch.cat(image[i]).to(self.device), torch.cat(label[i]).to(self.device)
+            else:
+                image[i], label[i] = image[i].to(self.device), label[i].to(self.device)
+
 
         feature = model(image, feature_flag=True, label=label)
         output = model(feature, classifier_flag=True)

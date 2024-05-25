@@ -196,6 +196,47 @@ class ImageNet_LT(BaseSet):
         image_label = now_info['category_id']  # 0-index
         return image, image_label, meta
 
+
+class ImageNet_LT_NCL_PLUS(BaseSet):
+    def __init__(self, mode='train', cfg=None, sample_id = 0, transform=None):
+        super(ImageNet_LT_NCL_PLUS, self).__init__(mode, cfg, transform)
+        self.sample_type = cfg.TRAIN.SAMPLER.MULTI_NETWORK_TYPE[sample_id]
+        self.class_dict = self._get_class_dict()
+        self.transform = aug_plus(dataset='ImageNet_LT', aug_type='randcls_sim', mode=mode, plus_plus='False')
+        self.intra_N = cfg.DATASET.INTRA_N
+
+    def __getitem__(self, index):
+        if 'weighted' in self.sample_type \
+                and self.mode == 'train':
+            assert self.sample_type in ["weighted_balance", 'weighted_square', 'weighted_progressive']
+            if self.sample_type == "weighted_balance":
+                sample_class = random.randint(0, self.num_classes - 1)
+            elif self.sample_type == "weighted_square":
+                sample_class = np.random.choice(np.arange(self.num_classes), p=self.square_p)
+            else:
+                sample_class = np.random.choice(np.arange(self.num_classes), p=self.progress_p)
+            sample_indexes = self.class_dict[sample_class]
+            index = random.choice(sample_indexes)
+        now_info = self.data[index]
+        img = self._get_image(now_info)
+        if self.mode != 'train':
+            image = self.transform(img)
+            meta = dict({'image_id': index})
+            image_label = now_info['category_id']  # 0-index
+            return image, image_label, meta
+        else:
+            image = []
+            image_label = []
+            
+            for i in range(self.intra_N):
+                image.append(self.transform[0](img))
+                image_label.append(now_info['category_id'])
+                meta = dict({'image_id': index})
+        
+            return image, image_label, meta
+
+
+
 class Places_LT_MOCO(BaseSet):
     def __init__(self, mode='train', cfg=None,sample_id = 0, transform=None):
         super(Places_LT_MOCO, self).__init__(mode, cfg, transform)

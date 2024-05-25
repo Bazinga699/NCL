@@ -1,9 +1,9 @@
 ## Nested Collaborative Learning for Long-Tailed Visual Recognition
 
-This repository is the official PyTorch implementation of the paper in CVPR 2022:
+This repository is the official PyTorch implementation of the papers in CVPR 2022 and Pattern Recognition:
 
 **Nested Collaborative Learning for Long-Tailed Visual Recognition**<br/>
-[Jun Li](https://scholar.google.com/citations?user=93wHW4oAAAAJ&hl=zh-CN&oi=sra),
+[Jun Li](https://bazinga699.github.io/),
 [Zichang Tan](https://scholar.google.com/citations?user=s29CDY8AAAAJ&hl=zh-CN&oi=ao),
 [Jun Wan](https://scholar.google.com/citations?user=bSbc7FQAAAAJ&hl=zh-CN),
 [Zhen Lei](https://scholar.google.com/citations?user=cuJ3QG8AAAAJ&hl=zh-CN),
@@ -12,6 +12,20 @@ This repository is the official PyTorch implementation of the paper in CVPR 2022
 &nbsp;
 <p align="center">
 <img src='./resource/framework_English.png'>
+</p>
+&nbsp;
+
+**NCL++: Nested Collaborative Learning for Long-Tailed Visual Recognition**<br/>
+[Zichang Tan](https://scholar.google.com/citations?user=s29CDY8AAAAJ&hl=zh-CN&oi=ao),
+[Jun Li](https://bazinga699.github.io/),
+jinhao Du,
+[Jun Wan](https://scholar.google.com/citations?user=bSbc7FQAAAAJ&hl=zh-CN),
+[Zhen Lei](https://scholar.google.com/citations?user=cuJ3QG8AAAAJ&hl=zh-CN),
+[Guodong Guo](https://scholar.google.com/citations?user=f2Y5nygAAAAJ&hl=zh-CN) <br/>
+[[PDF](https://arxiv.org/pdf/2203.15359.pdf)]
+&nbsp;
+<p align="center">
+<img src='./resource/NCL++.png'>
 </p>
 &nbsp;
 
@@ -204,7 +218,11 @@ First, prepare the dataset and modify the relevant paths in config/CIFAR100/cifa
 1, Train
 # Train long-tailed CIFAR-100 with imbalanced ratio of 100. 
 # `GPUs` are the GPUs you want to use, such as '0' or`0,1,2,3`.
+# NCL
 bash data_parallel_train.sh /home/lijun/papers/NCL/config/CIFAR/CIFAR100/cifar100_im100_NCL.yaml 0
+
+#NCL++
+bash data_parallel_train.sh /home/lijun/papers/NCL/config/CIFAR/CIFAR100/cifar100_im100_NCL++.yaml 0
 ```
 
 #### Distributed training with DistributedDataParallel 
