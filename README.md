@@ -252,6 +252,16 @@ If you find our work inspiring or use our codebase in your research, please cons
   pages={6949--6958},
   year={2022}
 }
+
+@article{tan2024ncl++,
+  title={NCL++: Nested Collaborative Learning for long-tailed visual recognition},
+  author={Tan, Zichang and Li, Jun and Du, Jinhao and Wan, Jun and Lei, Zhen and Guo, Guodong},
+  journal={Pattern Recognition},
+  volume={147},
+  pages={110064},
+  year={2024},
+  publisher={Elsevier}
+}
 ```
 
 ## Acknowledgements
